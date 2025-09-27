@@ -8,7 +8,6 @@ import { Certificate } from '../../types';
 const Certificates: React.FC = () => {
   const { isDark } = useTheme();
   const { certificates, loading } = useCertificates();
-  const displayCertificates = certificates.length > 0 ? certificates : staticCertificates;
 
   if (loading) {
     return (
@@ -41,21 +40,25 @@ const Certificates: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
-            isDark ? 'text-white' : 'text-gray-800'
-          }`}>
+          <h2
+            className={`text-3xl md:text-4xl font-bold mb-4 ${
+              isDark ? 'text-white' : 'text-gray-800'
+            }`}
+          >
             Certifications
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-6"></div>
-          <p className={`text-lg max-w-2xl mx-auto ${
-            isDark ? 'text-gray-300' : 'text-gray-600'
-          }`}>
+          <p
+            className={`text-lg max-w-2xl mx-auto ${
+              isDark ? 'text-gray-300' : 'text-gray-600'
+            }`}
+          >
             My professional certifications and credentials
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayCertificates.map((certificate, index) => (
+          {certificates.map((certificate: Certificate, index: number) => (
             <motion.div
               key={certificate.id}
               initial={{ opacity: 0, y: 30 }}
@@ -78,22 +81,27 @@ const Certificates: React.FC = () => {
                   <h3 className="text-lg font-semibold text-white">
                     {certificate.title}
                   </h3>
-                  <p className="text-sm text-gray-300">{certificate.issuingOrganization}</p>
+                  <p className="text-sm text-gray-300">
+                    {certificate.issuingOrganization}
+                  </p>
                 </div>
               </div>
 
               <div className="p-5">
-                <div className={`flex items-center text-sm mb-4 ${
-                  isDark ? 'text-gray-400' : 'text-gray-500'
-                }`}>
+                <div
+                  className={`flex items-center text-sm mb-4 ${
+                    isDark ? 'text-gray-400' : 'text-gray-500'
+                  }`}
+                >
                   <Calendar size={16} className="mr-2" />
-                  Issued on {new Date(certificate.issueDate).toLocaleDateString('en-US', {
+                  Issued on{' '}
+                  {new Date(certificate.issueDate).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
-                    day: 'numeric'
+                    day: 'numeric',
                   })}
                 </div>
-                
+
                 {certificate.credentialUrl && (
                   <motion.a
                     href={certificate.credentialUrl}
@@ -116,7 +124,7 @@ const Certificates: React.FC = () => {
           ))}
         </div>
 
-        {displayCertificates.length === 0 && (
+        {certificates.length === 0 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -124,8 +132,17 @@ const Certificates: React.FC = () => {
             viewport={{ once: true }}
             className="text-center py-12"
           >
-            <Award size={48} className={`mx-auto mb-4 ${isDark ? 'text-gray-500' : 'text-gray-400'}`} />
-            <p className={`text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+            <Award
+              size={48}
+              className={`mx-auto mb-4 ${
+                isDark ? 'text-gray-500' : 'text-gray-400'
+              }`}
+            />
+            <p
+              className={`text-lg ${
+                isDark ? 'text-gray-300' : 'text-gray-600'
+              }`}
+            >
               No certificates to display at the moment.
             </p>
           </motion.div>
