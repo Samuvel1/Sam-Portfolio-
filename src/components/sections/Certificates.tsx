@@ -8,32 +8,6 @@ import { Certificate } from '../../types';
 const Certificates: React.FC = () => {
   const { isDark } = useTheme();
   const { certificates, loading } = useCertificates();
-
-  // const staticCertificates: Array<Certificate> = [
-  //   {
-  //     id: '1',
-  //     title: 'Google Certified Professional Cloud Architect',
-  //     issuingOrganization: 'Google',
-  //     issueDate: '2023-10-20',
-  //     credentialId: 'GCP-123456',
-  //     credentialUrl: 'https://www.google.com/cloud/certification',
-  //     imageUrl: 'https://images.pexels.com/photos/276452/pexels-photo-276452.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //     imagePublicId: '',
-  //     createdAt: new Date('2023-10-20').toISOString()
-  //   },
-  //   {
-  //     id: '2',
-  //     title: 'Microsoft Certified: Azure Solutions Architect Expert',
-  //     issuingOrganization: 'Microsoft',
-  //     issueDate: '2023-08-15',
-  //     credentialId: 'MS-987654',
-  //     credentialUrl: 'https://docs.microsoft.com/en-us/learn/certifications/azure-solutions-architect',
-  //     imageUrl: 'https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //     imagePublicId: '',
-  //     createdAt: new Date('2023-08-15').toISOString()
-  //   }
-  // ];
-
   const displayCertificates = certificates.length > 0 ? certificates : staticCertificates;
 
   if (loading) {
