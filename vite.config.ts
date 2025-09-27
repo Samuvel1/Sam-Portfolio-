@@ -13,7 +13,7 @@ export default defineConfig({
     include: ['lucide-react'], // ✅ make sure it's pre-bundled
   },
   build: {
-    outDir: 'dist', // default, but good to keep explicit
+    outDir: 'final', // default, but good to keep explicit
     sourcemap: true, // helpful for debugging production
   },
   server: {
